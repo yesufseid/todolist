@@ -12,15 +12,28 @@
      <div class="row justify-content-center ">
         <div class="col-lg-5">
             <div class="border border-danger border-radious-3 my-5 bg-info"> 
-                <h1 class=" text-white "><%=listTitle%></h1>
+                <h1 class=" text-white  text-center"><%=listTitle%></h1>
             </div>
            
             <ul class="list-group bg-dark" >
                
-              <%  for (let i = 0; i < newitems.length; i++) {  %>
-                  <li class="list-group-item text-white bg-dark"><%=newitems[i] %></li>
+                <%  newitems.forEach(function(items){ %>
+                <div class="container d-flex ">
+                    <form action="/delete" method="post">
+                        <input type="checkbox" class="border-0" name="checkbox" value="<%=items.name %>" onchange="this.form.submit()">
+                        <input type="hidden"  name="hidden" value=<%=listTitle%> >
+                    </form>
+                    
+                    <li class="list-group-item text-white bg-dark border-0"><%=items.name %></li>
+                </div>
+               
+                <%  }) %>
+
+
+              <!-- <%  for (let i = 0; i < newitems.length; i++) {  %>
+                 
                   
-               <% }  %>
+               <% }  %> -->
               
             </ul>
              <form action="/" method="post">
